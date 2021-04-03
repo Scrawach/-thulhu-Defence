@@ -6263,6 +6263,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7948628782161342490}
   - component: {fileID: 2653227709345178804}
+  - component: {fileID: 1670028951675065720}
   m_Layer: 0
   m_Name: crystal
   m_TagString: Untagged
@@ -6305,6 +6306,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1670028951675065720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7279192964132006560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03eec9d25edf0ac45bb676da8c2fa312, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 90
 --- !u!1 &8158739632024631937
 GameObject:
   m_ObjectHideFlags: 0
@@ -6673,14 +6687,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a39f1377bbeec11459b9c202d6d6ae7e, type: 3}
---- !u!4 &3006374100270970352 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4239992571568863641, guid: a39f1377bbeec11459b9c202d6d6ae7e, type: 3}
-  m_PrefabInstance: {fileID: 1400535471636728937}
-  m_PrefabAsset: {fileID: 0}
 --- !u!198 &5194713418286285758 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 6591272881858351063, guid: a39f1377bbeec11459b9c202d6d6ae7e, type: 3}
+  m_PrefabInstance: {fileID: 1400535471636728937}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3006374100270970352 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4239992571568863641, guid: a39f1377bbeec11459b9c202d6d6ae7e, type: 3}
   m_PrefabInstance: {fileID: 1400535471636728937}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4650905967136225277

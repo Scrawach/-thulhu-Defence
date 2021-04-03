@@ -4698,7 +4698,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LoseWindow: {fileID: 1396666871}
-  WinWindow: {fileID: 0}
+  WinWindow: {fileID: 1581746252}
 --- !u!4 &1980129773
 Transform:
   m_ObjectHideFlags: 0

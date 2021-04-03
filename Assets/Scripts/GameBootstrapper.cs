@@ -1,5 +1,6 @@
 ﻿using Building;
 using Building.ShopLogic;
+using Cthulhu;
 using EnemyLogic;
 using EnemyLogic.Spawner;
 using Infrastructure.Environment;
@@ -54,6 +55,6 @@ public class GameBootstrapper : MonoBehaviour
         
         _enemySpawner.Construct(game.GameFactory);
         _levelProgressSlider.Construct(game.Score);
-        _levelProgress.Construct(game.GameFactory.Home.GetComponent<Health>(), game.Score);
+        _levelProgress.Construct(game.GameFactory.Home.GetComponent<Health>(), game.GameFactory.Home.GetComponent<Rise>());
     }
 }

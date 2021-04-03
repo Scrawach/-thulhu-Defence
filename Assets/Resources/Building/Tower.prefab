@@ -1064,7 +1064,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 3
+      scalar: 2
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -5864,6 +5864,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LineRenderer: {fileID: 5011909893896774684}
   Laser: {fileID: 5011909895580103732}
+  MeshRenderer: {fileID: 6755190592148214197}
+  HighlightMaterial: {fileID: 2100000, guid: cea4f03b2b2fa3b498b84168584525fd, type: 2}
 --- !u!1 &5456636838972435913
 GameObject:
   m_ObjectHideFlags: 0
@@ -6076,7 +6078,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -1140570484707157370, guid: 0fe959d7231ef1646857a3e41a99ed64, type: 3}
+  - {fileID: -1140570484707157370, guid: 0d013e5117f8430409b86ed6f20419e2, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6641,6 +6643,10 @@ PrefabInstance:
     - target: {fileID: 362178215541146569, guid: ea8bce640bed0134591e31fae4672eb3, type: 3}
       propertyPath: m_Name
       value: LaserBeam
+      objectReference: {fileID: 0}
+    - target: {fileID: 362178215541146569, guid: ea8bce640bed0134591e31fae4672eb3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 362178215927105063, guid: ea8bce640bed0134591e31fae4672eb3, type: 3}
       propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar

@@ -2,6 +2,7 @@
 using Infrastructure.Factory;
 using Items;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Building
 {
@@ -12,6 +13,9 @@ namespace Building
 
         [SerializeField]
         private Transform _spawnPosition;
+
+        [SerializeField] 
+        private float _moneyChance;
 
         private GameFactory _gameFactory;
         private float _timeElapsed;
@@ -25,7 +29,11 @@ namespace Building
         {
             if (_timeElapsed >= _timeCooldown)
             {
-                _gameFactory.CreateDrop(DropType.Bonus, _spawnPosition.position);
+                if (_moneyChance < Random.value)
+                    _gameFactory.CreateDrop(DropType.Money, _spawnPosition.position);
+                else
+                    _gameFactory.CreateDrop(DropType.Bonus, _spawnPosition.position);
+                
                 _timeElapsed = 0f;
             }
             else

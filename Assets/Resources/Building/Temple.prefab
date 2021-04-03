@@ -77,8 +77,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 937104fd10bc47d28f05495e86123fe4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _timeCooldown: 1
+  _timeCooldown: 5
   _spawnPosition: {fileID: 7209356785450692156}
+  _moneyChance: 0.3
 --- !u!114 &6920139328536685985
 MonoBehaviour:
   m_ObjectHideFlags: 0

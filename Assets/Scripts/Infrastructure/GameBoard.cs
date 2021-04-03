@@ -50,7 +50,6 @@ namespace Infrastructure
         public List<BoardTile> Generate(char[,] size, Vector2Int center)
         {
             var tiles = new List<BoardTile>(size.GetLength(0) * size.GetLength(1));
-            var homePlaced = false;
 
             for (int x = 0; x < size.GetLength(0); x++)
             {

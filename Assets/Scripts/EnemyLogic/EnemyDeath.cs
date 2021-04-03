@@ -5,6 +5,9 @@ namespace EnemyLogic
 {
     public class EnemyDeath : MonoBehaviour
     {
+        [SerializeField] 
+        private GameObject _effect;
+        
         private Health _health;
 
         public event Action Happened;
@@ -20,6 +23,7 @@ namespace EnemyLogic
 
         private void OnDied()
         {
+            Instantiate(_effect, transform.position, Quaternion.identity);
             Happened?.Invoke();
             Destroy(gameObject);
         }

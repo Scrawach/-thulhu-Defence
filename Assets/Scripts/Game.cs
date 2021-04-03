@@ -28,7 +28,7 @@ public class Game
         var assetProvider = new AssetProvider();
         Wallet = new Wallet();
         Score = new Score(targetScore);
-        
+
         GameFactory = new GameFactory(assetProvider, Wallet, Score);
         GameBoard = new GameBoard(GameFactory, _boardContainer);
 

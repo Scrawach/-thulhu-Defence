@@ -39,8 +39,11 @@ namespace UI
         public void Show() =>
             gameObject.SetActive(true);
 
-        public void Hide() => 
+        public void Hide()
+        {
+            ErrorLabel.SetAlpha(0f);
             gameObject.SetActive(false);
+        }
 
         private void OnTowerPurchased() => 
             Purchased?.Invoke(BuildingType.Tower);

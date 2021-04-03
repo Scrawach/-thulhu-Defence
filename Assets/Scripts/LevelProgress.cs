@@ -1,4 +1,5 @@
-﻿using EnemyLogic;
+﻿using Cthulhu;
+using EnemyLogic;
 using Player;
 using UI;
 using UnityEngine;
@@ -9,21 +10,25 @@ public class LevelProgress : MonoBehaviour
     public CanvasFade WinWindow;
     
     private Health _home;
-    private Score _score;
+    private Rise _rise;
     
-    public void Construct(Health home, Score score)
+    public void Construct(Health home, Rise rise)
     {
         _home = home;
-        _score = score;
+        _rise = rise;
 
         _home.Died += OnHomeDied;
-        _score.Changed += OnScoreChanged;
+        _rise.Win += OnWinHappened;
     }
 
-    private void OnScoreChanged(int value)
+    public void ForceWin()
     {
-        if (value >= _score.TargetValue)
-            WinWindow.Show();
+        _rise.StartAnim();
+    }
+
+    private void OnWinHappened()
+    {
+        WinWindow.Show();
     }
 
     private void OnHomeDied()

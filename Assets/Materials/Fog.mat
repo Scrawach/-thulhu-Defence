@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Fog
-  m_Shader: {fileID: -6465566751694194690, guid: 1a3120f49206500428dd403af6f51cd3, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: c524315571b74a148b55b64f1c02fe04, type: 3}
   m_ShaderKeywords: BOOLEAN_6C4164AC_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -90,7 +90,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - BOOLEAN_6C4164AC: 1
-    - Vector1_BF525535: 0.65
+    - Vector1_BF525535: 0.6
+    - Vector1_c2bfcf2038444f5382acb442f5467498: 0.1
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -118,9 +119,11 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_58E0201D: {r: 0, g: 0.0004901961, b: 0.009803922, a: 0.6941177}
+    - Color_58E0201D: {r: 0, g: 0.004740128, b: 0.023214461, a: 0.89411765}
+    - Color_c879c18f4d184d74991021cd76d225ae: {r: 1, g: 1, b: 1, a: 0.44705883}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _FogColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []

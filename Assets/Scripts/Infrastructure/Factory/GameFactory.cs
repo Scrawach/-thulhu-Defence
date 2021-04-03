@@ -1,6 +1,7 @@
 ﻿using Board;
 using Board.Tile;
 using Building;
+using Cthulhu;
 using EnemyLogic;
 using Infrastructure.AssetManagement;
 using Items;
@@ -60,6 +61,7 @@ namespace Infrastructure.Factory
             {
                 case BuildingType.Home:
                     _home = _assetProvider.Initialize(AssetPath.Home, tile.transform.position);
+                    _home.GetComponent<Rise>().Construct(Score);
                     break;
                 case BuildingType.Tower:
                     _assetProvider.Initialize(AssetPath.Tower, tile.transform.position);

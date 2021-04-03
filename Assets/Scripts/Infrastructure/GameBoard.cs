@@ -61,6 +61,9 @@ namespace Infrastructure
                     {
                         tile = AddTile(x, y, tiles);
                         _gameFactory.CreateBuilding(BuildingType.Home, tile);
+                        GenerateLeftWall(size, y, x, tile);
+                        GenerateDownWall(size, x, y, tile);
+                        continue;
                     }
                     
                     if (size[x, y] != '#')

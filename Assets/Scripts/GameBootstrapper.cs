@@ -25,11 +25,11 @@ public class GameBootstrapper : MonoBehaviour
     private Shop _shop = default;
 
     [SerializeField] 
-    private WalletView _walletView = default;
+    private DescriptionView _descriptionView = default;
 
     [SerializeField] 
-    private HealthViewSlider _healthSlider = default;
-    
+    private WalletView _walletView = default;
+
     [SerializeField] 
     private LevelProgressView _levelProgressSlider = default;
 
@@ -49,10 +49,9 @@ public class GameBootstrapper : MonoBehaviour
 
         game.Wallet.Add(_initMoney);
         _shop.Construct(game.GameFactory, game.Wallet);
-        
+        _descriptionView.Construct(game.Wallet);
         _walletView.Construct(game.Wallet);
-        _healthSlider.Construct(game.GameFactory.Home.GetComponent<Health>());
-        
+
         _enemySpawner.Construct(game.GameFactory);
         _levelProgressSlider.Construct(game.Score);
         _levelProgress.Construct(game.GameFactory.Home.GetComponent<Health>(), game.GameFactory.Home.GetComponent<Rise>());

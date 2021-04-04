@@ -5,7 +5,7 @@ using Random = UnityEngine.Random;
 
 namespace Building
 {
-    public class Tower : MonoBehaviour
+    public class Tower : MonoBehaviour, IUpgradable
     {
         private const int EnemyLayerMask = 1 << 9;
 
@@ -30,18 +30,33 @@ namespace Building
         [SerializeField] 
         private float _timeForPrepare = 1f;
 
+        private float _bonusDamagePerSecond;
+        public BuildingDescription _description { get; private set; }
+
+        public float ResultDamagePerSecond => 
+            _damagePerSecond + _bonusDamagePerSecond;
+        
         private float _timeElapsed;
         private TargetPoint _target;
         private readonly Collider[] _targetResults = new Collider[10];
+
+        private Rebuilding _rebuilding;
 
         private void Awake()
         {
             _prepare.Stop();
             _laserDamage.Stop();
+
+            _rebuilding = GetComponent<Rebuilding>();
+            _description = GetComponent<BuildingDescription>();
+            Price = _description.Description.UpgradePrice;
         }
 
         private void Update()
         {
+            if (_rebuilding.Rebuild)
+                return;
+            
             if (_target != null)
             {
                 _turret.LookAt(_target.Position);
@@ -79,7 +94,7 @@ namespace Building
 
             var distance = Vector3.Distance(_turret.position, point);
             _laser.Shoot(new Vector3(0, 0, distance * 2));
-            _target.Health.ApplyDamage(_damagePerSecond * Time.deltaTime);
+            _target.Health.ApplyDamage(ResultDamagePerSecond * Time.deltaTime);
         }
 
         private void FindTarget()
@@ -113,5 +128,16 @@ namespace Building
                 Gizmos.DrawLine(position, _target.Position);
             }
         }
+
+        public void Upgrade()
+        {
+            _rebuilding.StartRebuild();
+            var description = _description.Description;
+            _bonusDamagePerSecond += description.UpgradeBonus;
+            description.Value = ResultDamagePerSecond;
+            description.Update();
+        }
+
+        public int Price { get; set; }
     }
 }

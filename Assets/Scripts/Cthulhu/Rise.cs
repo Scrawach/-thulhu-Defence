@@ -19,6 +19,9 @@ namespace Cthulhu
         [SerializeField] 
         private GameObject _destroySphere;
 
+        [SerializeField] 
+        private GameObject _audio;
+
         private Score _score;
 
         public event Action Win;
@@ -54,6 +57,7 @@ namespace Cthulhu
 
             yield return new WaitForSeconds(_time);
             _cthulhu.SetActive(true);
+            _audio.SetActive(true);
             
             yield return new WaitForSeconds(4f);
             Win?.Invoke();

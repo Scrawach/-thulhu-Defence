@@ -62,13 +62,16 @@ namespace Infrastructure.Factory
                 case BuildingType.Home:
                     _home = _assetProvider.Initialize(AssetPath.Home, tile.transform.position);
                     _home.GetComponent<Rise>().Construct(Score);
+                    tile.SetBuilding(_home);
                     break;
                 case BuildingType.Tower:
-                    _assetProvider.Initialize(AssetPath.Tower, tile.transform.position);
+                    var tower = _assetProvider.Initialize(AssetPath.Tower, tile.transform.position);
+                    tile.SetBuilding(tower);
                     break;
                 case BuildingType.Temple:
                     var temple = _assetProvider.Initialize(AssetPath.Temple, tile.transform.position); 
                     temple.GetComponent<Temple>().Construct(this);
+                    tile.SetBuilding(temple);
                     break;
                 default:
                     Debug.LogError("Not expected building type!");

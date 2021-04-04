@@ -16,6 +16,8 @@ namespace UI
         public event Action<BuildingType> Purchased;
         public event Action Closed;
 
+        private bool _isHiding = true;
+
         private void OnEnable()
         {
             TowerPurchase.onClick.AddListener(OnTowerPurchased);
@@ -36,11 +38,21 @@ namespace UI
             ErrorLabel.Hide();
         }
 
-        public void Show() =>
+        public void Show()
+        {
+            if (_isHiding == false)
+                return;
+
+            _isHiding = false;
             gameObject.SetActive(true);
+        }
 
         public void Hide()
         {
+            if (_isHiding)
+                return;
+
+            _isHiding = true;
             ErrorLabel.SetAlpha(0f);
             gameObject.SetActive(false);
         }

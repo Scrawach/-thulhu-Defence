@@ -1,0 +1,11 @@
+This game uses these sounds from freesound:
+
+Monster_Roar.mp3(enteded) by kp2494 (https://freesound.org/s/487177/) licensed under the Attribution 3.0 Unported (CC BY 3.0) Rockfall in mine.wav by Benboncan (https://freesound.org/s/60085/) licensed under the Attribution 3.0 Unported (CC BY 3.0) 
+(https://creativecommons.org/licenses/by/3.0/legalcode)
+
+This game uses music from incompetech.filmmusic.io:
+Ethernight Club by Kevin MacLeod (https://incompetech.filmmusic.io/song/7612-ethernight-club) licensed under the Filmmusic Standard (https://incompetech.filmmusic.io/standard-license)
+
+This game uses font from fonts-online.ru:
+Konstanting by Jeff Agala and PhyanPhoenix (https://www.fonts-online.ru/font/Konstanting) 
+Copyright: Typeface © (your company). 2020. All Rights Reserved

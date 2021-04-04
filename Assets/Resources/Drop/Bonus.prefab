@@ -4938,7 +4938,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73b139a34f4c4483a542a7ef7e24f517, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _valueRange: {x: 5, y: 5}
+  _valueRange: {x: 1, y: 1}
   _destroyEffect: {fileID: 1160061528307422280, guid: 9f473036a2eba1247971520b6364b986, type: 3}
 --- !u!1 &8073390257043415808
 GameObject:

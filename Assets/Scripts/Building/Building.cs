@@ -25,20 +25,21 @@ namespace Building
 
         private IEnumerator Process()
         {
-            var timeStep = Time.deltaTime / _time;
+            var timeStep = Time.fixedDeltaTime / _time;
             var t = 0f;
             var start = _buildingModel.localPosition;
-
-            _buildingEffect.Play();
             
+            _buildingEffect.gameObject.SetActive(true);
+            _buildingEffect.Play();
             while (t < 1)
             {
                 _buildingModel.localPosition = Vector3.Lerp(start, _buildResult, t);
                 t += timeStep;
-                yield return new WaitForEndOfFrame();
+                yield return new WaitForFixedUpdate();
             }
             
             _buildingModel.localPosition = _buildResult;
+            _buildingEffect.gameObject.SetActive(false);
             _buildingEffect.Stop();
         }
         

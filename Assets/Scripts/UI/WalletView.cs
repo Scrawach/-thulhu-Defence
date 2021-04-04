@@ -9,7 +9,12 @@ namespace UI
         [SerializeField] 
         private TextMeshProUGUI _money;
 
+        [SerializeField] 
+        private WalletUpdate _walletUpdate;
+
         private Wallet _wallet;
+
+        private int _prevValue;
 
         public void Construct(Wallet wallet)
         {
@@ -21,7 +26,11 @@ namespace UI
             OnMoneyChanged(_wallet.Money);
         }
 
-        private void OnMoneyChanged(int value) => 
+        private void OnMoneyChanged(int value)
+        {
             _money.text = value.ToString();
+            _walletUpdate.UpdateData(value - _prevValue);
+            _prevValue = value;
+        }
     }
 }

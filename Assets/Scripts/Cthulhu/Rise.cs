@@ -19,8 +19,12 @@ namespace Cthulhu
         [SerializeField] 
         private GameObject _destroySphere;
 
-        private Score _score;
+        [SerializeField] 
+        private GameObject _audio;
 
+        private Score _score;
+        private bool _gameOver;
+        
         public event Action Win;
 
         public void Construct(Score score)
@@ -29,8 +33,16 @@ namespace Cthulhu
             _score.Changed += OnScoreChanged;
         }
 
+        public void Lock()
+        {
+            _gameOver = true;
+        }
+
         private void OnScoreChanged(int obj)
         {
+            if (_gameOver)
+                return;
+            
             if (obj >= _score.TargetValue)
             {
                 StartAnim();
@@ -54,6 +66,7 @@ namespace Cthulhu
 
             yield return new WaitForSeconds(_time);
             _cthulhu.SetActive(true);
+            _audio.SetActive(true);
             
             yield return new WaitForSeconds(4f);
             Win?.Invoke();

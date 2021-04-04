@@ -11,6 +11,8 @@ public class LevelProgress : MonoBehaviour
     
     private Health _home;
     private Rise _rise;
+
+    private bool _gameOver;
     
     public void Construct(Health home, Rise rise)
     {
@@ -28,11 +30,16 @@ public class LevelProgress : MonoBehaviour
 
     private void OnWinHappened()
     {
+        if (_gameOver)
+            return;
+        
         WinWindow.Show();
     }
 
     private void OnHomeDied()
     {
+        _gameOver = true;
+        _rise.Lock();
         LoseWindow.Show();
     }
 }

@@ -9729,7 +9729,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b8cdbb0c2a84238b193b41027dc152c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _valueRange: {x: 2, y: 3}
+  _valueRange: {x: 2, y: 2}
   _destroyEffect: {fileID: 1160061528307422280, guid: c4c4c0009107c804890f25e55f98dee4, type: 3}
 --- !u!114 &7167263094067284813
 MonoBehaviour:

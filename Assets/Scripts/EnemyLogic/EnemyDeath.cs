@@ -7,7 +7,7 @@ namespace EnemyLogic
     {
         [SerializeField] 
         private GameObject _effect;
-        
+
         private Health _health;
 
         public event Action Happened;

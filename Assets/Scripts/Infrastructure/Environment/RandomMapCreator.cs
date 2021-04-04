@@ -9,11 +9,11 @@ namespace Infrastructure.Environment
 
         private int _createdObjects;
 
-        public RandomMapCreator(RandomMapData data, int seed)
+        public RandomMapCreator(RandomMapData data)
         {
             _data = data;
             _createdObjects = 0;
-            Random.InitState(seed);
+            //Random.InitState(seed);
         }
         
         public char[,] Create()

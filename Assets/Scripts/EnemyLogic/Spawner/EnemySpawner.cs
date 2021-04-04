@@ -9,15 +9,18 @@ namespace EnemyLogic.Spawner
     public class EnemySpawner : MonoBehaviour
     {
         [SerializeField] 
-        private float _spawnCooldownTime = 1f;
-
-        [SerializeField] 
         private float _distance = 5f;
 
         [SerializeField] 
         private float _height = 3f;
 
+        [SerializeField] 
+        private Scenario[] _scenarios;
+        
         private GameFactory _gameFactory;
+        private Scenario _current;
+        private int _scenarioIndex;
+        
         private bool _gameOver;
 
         public void Construct(GameFactory gameFactory)
@@ -38,19 +41,57 @@ namespace EnemyLogic.Spawner
 
         private IEnumerator Spawning()
         {
-            yield return new WaitForSeconds(1f);
-            
+            yield return new WaitForSeconds(3f);
+            _scenarioIndex = 0;
+
             while (_gameOver == false)
             {
-                yield return new WaitForSeconds(_spawnCooldownTime);
-                SpawnRandom();
+                _current = _scenarios[_scenarioIndex];
+                var submarineChance = _current.ChanceSubmarine;
+                var rocketChance = _current.ChanceRocket;
+                var timeOnScenario = _current.TimeOnThisScenario;
+                var timeCooldown = _current.SpawnCooldown;
+                var timeElapsed = 0f;
+
+                while (timeElapsed < timeOnScenario)
+                {
+                    var randomValue = Random.value;
+
+                    if (randomValue < rocketChance)
+                    {
+                        SpawnRocket();
+                    }
+                    else if (randomValue < rocketChance + submarineChance)
+                    {
+                        SpawnSubmarine();
+                    }
+
+                    yield return new WaitForSeconds(timeCooldown);
+                    timeElapsed += timeCooldown;
+                }
+
+                _scenarioIndex++;
+
+                if (_scenarios.Length <= _scenarioIndex)
+                {
+                    _scenarioIndex--;
+                }
             }
         }
-        
-        private void SpawnRandom()
+
+        private void SpawnRocket()
         {
-            float Angle = Random.Range(0, 360);
-            var positionXY = new Vector2(Mathf.Sin(Angle), Mathf.Cos(Angle)) * _distance;
+            float angle = Random.Range(0, 360);
+            var positionXY = new Vector2(Mathf.Sin(angle), Mathf.Cos(angle)) * _distance;
+            var position = new Vector3(positionXY.x, _height, positionXY.y) + _gameFactory.Home.transform.position;
+            
+            _gameFactory.CreateRocket(position);
+        }
+
+        private void SpawnSubmarine()
+        {
+            float angle = Random.Range(0, 360);
+            var positionXY = new Vector2(Mathf.Sin(angle), Mathf.Cos(angle)) * _distance;
             var position = new Vector3(positionXY.x, _height, positionXY.y) + _gameFactory.Home.transform.position;
             
             _gameFactory.CreateEnemy(position);

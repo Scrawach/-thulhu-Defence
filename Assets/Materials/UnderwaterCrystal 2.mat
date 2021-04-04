@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-6910329841072415534
+--- !u!114 &-1293044286945234102
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,14 +20,15 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Fog
-  m_Shader: {fileID: -6465566751694194690, guid: c524315571b74a148b55b64f1c02fe04, type: 3}
-  m_ShaderKeywords: BOOLEAN_6C4164AC_ON
-  m_LightmapFlags: 4
+  m_Name: UnderwaterCrystal 2
+  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
+  m_ShaderKeywords: _EMISSION
+  m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
+  m_CustomRenderQueue: 2000
+  stringTagMap:
+    RenderType: Opaque
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
@@ -89,9 +90,6 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - BOOLEAN_6C4164AC: 1
-    - Vector1_BF525535: 0.6
-    - Vector1_c2bfcf2038444f5382acb442f5467498: 0.1
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -119,11 +117,8 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_58E0201D: {r: 0, g: 0.004740128, b: 0.023214461, a: 0.89411765}
-    - Color_c879c18f4d184d74991021cd76d225ae: {r: 1, g: 1, b: 1, a: 0.44705883}
-    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    - _BaseColor: {r: 0.5727748, g: 0.031372547, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _FogColor: {r: 0, g: 0, b: 0, a: 1}
+    - _EmissionColor: {r: 0.28442717, g: 0, b: 0.84705883, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []

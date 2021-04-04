@@ -16,6 +16,18 @@ namespace Building
             Price = _buildingDescription.Description.UpgradePrice;
         }
 
+        private void OnEnable() => 
+            _health.Changed += OnHealthChanged;
+
+        private void OnDisable() => 
+            _health.Changed -= OnHealthChanged;
+
+        private void OnHealthChanged(float arg1, float arg2)
+        {
+            _buildingDescription.Description.Value = arg1;
+            _buildingDescription.Description.Update();
+        }
+
         public void Upgrade()
         {
             var description = _buildingDescription.Description;

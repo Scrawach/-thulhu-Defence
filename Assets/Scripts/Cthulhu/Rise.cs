@@ -23,7 +23,8 @@ namespace Cthulhu
         private GameObject _audio;
 
         private Score _score;
-
+        private bool _gameOver;
+        
         public event Action Win;
 
         public void Construct(Score score)
@@ -32,8 +33,16 @@ namespace Cthulhu
             _score.Changed += OnScoreChanged;
         }
 
+        public void Lock()
+        {
+            _gameOver = true;
+        }
+
         private void OnScoreChanged(int obj)
         {
+            if (_gameOver)
+                return;
+            
             if (obj >= _score.TargetValue)
             {
                 StartAnim();

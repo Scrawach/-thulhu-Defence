@@ -61,6 +61,7 @@ namespace Infrastructure.Factory
                 case BuildingType.Home:
                     _home = _assetProvider.Initialize(AssetPath.Home, tile.transform.position);
                     _home.GetComponent<Rise>().Construct(Score);
+                    _home.GetComponent<Temple>().Construct(this);
                     tile.SetBuilding(_home);
                     break;
                 case BuildingType.Tower:

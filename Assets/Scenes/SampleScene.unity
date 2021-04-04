@@ -2386,7 +2386,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 6
+  orthographic size: 7
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -2410,7 +2410,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 697792754}
   m_LocalRotation: {x: 0.35355338, y: 0.35355338, z: -0.1464466, w: 0.8535535}
-  m_LocalPosition: {x: -6.125, y: 14.61, z: -6.125}
+  m_LocalPosition: {x: -5.875, y: 14.963553, z: -5.875}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3773,7 +3773,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 6
+  orthographic size: 7
   m_Depth: 2
   m_CullingMask:
     serializedVersion: 2
@@ -3797,7 +3797,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0.35355338, y: 0.35355338, z: -0.1464466, w: 0.8535535}
-  m_LocalPosition: {x: -6.125, y: 14.61, z: -6.125}
+  m_LocalPosition: {x: -5.875, y: 14.963553, z: -5.875}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -6845,18 +6845,18 @@ MonoBehaviour:
     LessCooldownAfter: 0
   - ChanceSubmarine: 0.9
     ChanceRocket: 0.1
-    SpawnCooldown: 2
+    SpawnCooldown: 1.5
     TimeOnThisScenario: 35
     LessCooldownAfter: 0
   - ChanceSubmarine: 0.5
     ChanceRocket: 0.5
-    SpawnCooldown: 1.5
+    SpawnCooldown: 1
     TimeOnThisScenario: 60
     LessCooldownAfter: 0
   - ChanceSubmarine: 0.3
     ChanceRocket: 0.7
     SpawnCooldown: 1
-    TimeOnThisScenario: 60
+    TimeOnThisScenario: 30
     LessCooldownAfter: 0
   - ChanceSubmarine: 0.2
     ChanceRocket: 0.8
@@ -6866,6 +6866,11 @@ MonoBehaviour:
   - ChanceSubmarine: 0.2
     ChanceRocket: 0.8
     SpawnCooldown: 0.3
+    TimeOnThisScenario: 60
+    LessCooldownAfter: 0
+  - ChanceSubmarine: 0
+    ChanceRocket: 1
+    SpawnCooldown: 0.1
     TimeOnThisScenario: 60
     LessCooldownAfter: 0
 --- !u!4 &1793355244

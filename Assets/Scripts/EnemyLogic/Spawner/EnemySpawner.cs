@@ -9,9 +9,6 @@ namespace EnemyLogic.Spawner
     public class EnemySpawner : MonoBehaviour
     {
         [SerializeField] 
-        private float _spawnCooldownTime = 1f;
-
-        [SerializeField] 
         private float _distance = 5f;
 
         [SerializeField] 
@@ -79,9 +76,6 @@ namespace EnemyLogic.Spawner
                 {
                     _scenarioIndex--;
                 }
-                /*
-                yield return new WaitForSeconds(_spawnCooldownTime);
-                SpawnRandom();*/
             }
         }
 

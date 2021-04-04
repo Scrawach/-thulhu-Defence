@@ -1,17 +1,7 @@
 This game uses these sounds from freesound:
 
-laser_active_big by mazk1985 (https://freesound.org/s/187405/) licensed under the CC0 1.0 Universal (CC0 1.0) Public Domain Dedication  (https://creativecommons.org/publicdomain/zero/1.0/legalcode)
-
-SFX_Destruction_Ice_x04.wav by Euphrosyyn (https://freesound.org/s/380493/) licensed under the CC0 1.0 Universal (CC0 1.0) Public Domain Dedication (https://creativecommons.org/publicdomain/zero/1.0/legalcode)
-
-Monster_Roar.mp3(enteded) by kp2494 (https://freesound.org/s/487177/) licensed under the Attribution 3.0 Unported (CC BY 3.0) (https://creativecommons.org/licenses/by/3.0/legalcode)
-
-Rockfall in mine.wav by Benboncan (https://freesound.org/s/60085/) licensed under the Attribution 3.0 Unported (CC BY 3.0) (https://creativecommons.org/licenses/by/3.0/legalcode)
-
-Cartoon Pop (Distorted) by unfa (https://freesound.org/s/245646/) licensed under the CC0 1.0 Universal (CC0 1.0) Public Domain Dedication  (https://creativecommons.org/publicdomain/zero/1.0/legalcode)
-
-TollBell.wav by daytripper (https://freesound.org/s/73678/) licensed under the CC0 1.0 Universal (CC0 1.0) Public Domain Dedication  (https://creativecommons.org/publicdomain/zero/1.0/legalcode)
-
+Monster_Roar.mp3(enteded) by kp2494 (https://freesound.org/s/487177/) licensed under the Attribution 3.0 Unported (CC BY 3.0) Rockfall in mine.wav by Benboncan (https://freesound.org/s/60085/) licensed under the Attribution 3.0 Unported (CC BY 3.0) 
+(https://creativecommons.org/licenses/by/3.0/legalcode)
 
 This game uses music from incompetech.filmmusic.io:
 Ethernight Club by Kevin MacLeod (https://incompetech.filmmusic.io/song/7612-ethernight-club) licensed under the Filmmusic Standard (https://incompetech.filmmusic.io/standard-license)

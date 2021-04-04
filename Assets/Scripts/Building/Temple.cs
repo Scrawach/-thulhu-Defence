@@ -1,5 +1,6 @@
 ﻿using System;
 using Board.Tile;
+using EnemyLogic;
 using Infrastructure.Factory;
 using Items;
 using UnityEngine;
@@ -24,6 +25,8 @@ namespace Building
         private float _timeElapsed;
         
         private Rebuilding _rebuilding;
+        private Health _eggHealth;
+        private bool _lock;
 
         private void Awake()
         {
@@ -32,14 +35,28 @@ namespace Building
             Price = _description.UpgradePrice;
         }
 
-        public void Construct(GameFactory gameFactory)
+        public void Construct(GameFactory gameFactory, Health eggHealth)
         {
+            if (_eggHealth != null)
+            {
+                _eggHealth.Died -= OnEggDied;
+                _eggHealth = null;
+            }
+            
             _gameFactory = gameFactory;
+
+            _eggHealth = eggHealth;
+            _eggHealth.Died += OnEggDied;
+        }
+
+        private void OnEggDied()
+        {
+            _lock = true;
         }
 
         private void Update()
         {
-            if (_rebuilding.Rebuild)
+            if (_rebuilding.Rebuild || _lock)
                 return;
             
             if (_timeElapsed >= _timeCooldown)

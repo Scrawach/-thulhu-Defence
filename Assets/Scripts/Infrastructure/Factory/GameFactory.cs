@@ -15,11 +15,14 @@ namespace Infrastructure.Factory
         private readonly AssetProvider _assetProvider;
         private readonly Wallet _wallet;
         private readonly Score _score;
+        
         private GameObject _home;
+        private Health _homeHealth;
 
         public GameObject Home => _home;
         public Wallet Wallet => _wallet;
         public Score Score => _score;
+        
 
         public GameFactory(AssetProvider assetProvider, Wallet wallet, Score score)
         {
@@ -60,8 +63,9 @@ namespace Infrastructure.Factory
             {
                 case BuildingType.Home:
                     _home = _assetProvider.Initialize(AssetPath.Home, tile.transform.position);
+                    _homeHealth = _home.GetComponent<Health>();
                     _home.GetComponent<Rise>().Construct(Score);
-                    _home.GetComponent<Temple>().Construct(this);
+                    _home.GetComponent<Temple>().Construct(this, _homeHealth);
                     tile.SetBuilding(_home);
                     break;
                 case BuildingType.Tower:
@@ -70,7 +74,7 @@ namespace Infrastructure.Factory
                     break;
                 case BuildingType.Temple:
                     var temple = _assetProvider.Initialize(AssetPath.Temple, tile.transform.position); 
-                    temple.GetComponent<Temple>().Construct(this);
+                    temple.GetComponent<Temple>().Construct(this, _homeHealth);
                     tile.SetBuilding(temple);
                     break;
                 default:

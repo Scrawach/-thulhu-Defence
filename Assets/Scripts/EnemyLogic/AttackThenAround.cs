@@ -19,6 +19,14 @@ namespace EnemyLogic
         {
             _target = target;
             _gameFactory = gameFactory;
+
+            target.Died += OnTargetDied;
+        }
+
+        private void OnTargetDied()
+        {
+            Mover.enabled = false;
+            enabled = false;
         }
 
         private void Update()

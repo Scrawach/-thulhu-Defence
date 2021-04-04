@@ -22,6 +22,7 @@ namespace EnemyLogic.Spawner
         private int _scenarioIndex;
         
         private bool _gameOver;
+        private Coroutine _spawning;
 
         public void Construct(GameFactory gameFactory)
         {
@@ -32,12 +33,13 @@ namespace EnemyLogic.Spawner
         private void OnHomeDied()
         {
             _gameOver = true;
+            
+            StopCoroutine(_spawning);
+            _spawning = null;
         }
 
-        private void Start()
-        {
-            StartCoroutine(Spawning());
-        }
+        private void Start() => 
+            _spawning = StartCoroutine(Spawning());
 
         private IEnumerator Spawning()
         {

@@ -303,7 +303,7 @@ MonoBehaviour:
   Description:
     Text: "\u0425\u0440\u0430\u043C \u043A\u0443\u043B\u044C\u0442\u0438\u0441\u0442\u043E\u0432"
     CanUpgrade: 1
-    UpgradePrice: 1
+    UpgradePrice: 0
     UpgradeBonus: -0.2
     ValueName: TIME
     Value: 5

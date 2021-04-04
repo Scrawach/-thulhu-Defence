@@ -137,12 +137,24 @@ namespace UI
             Value.text = data.Value.ToString("0.0");
             Bonus.text = $"{symbol}{data.UpgradeBonus:0.0}";
             Price.text = data.UpgradePrice.ToString();
+            
+            Description.text = data.Text;
+            ValueNameInfo.text = data.ValueName;
+            ValueInfo.text = data.Value.ToString("0.0");
         }
         
         private void OnUpgradeButtonClicked()
         {
             if (_selectedObject.TryGetComponent(out IUpgradable upgradable))
             {
+                if (_observedData.CanUpgrade == false)
+                {
+                    UpdateData(_observedData);
+                    InformationPanel.SetActive(true);
+                    UpgradeMenu.SetActive(false);
+                    return;
+                }
+                
                 if (_wallet.HasMoreThan(upgradable.Price))
                 {
                     _wallet.Take(upgradable.Price);

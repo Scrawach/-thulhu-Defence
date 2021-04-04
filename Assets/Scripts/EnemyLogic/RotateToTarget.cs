@@ -45,8 +45,12 @@ namespace EnemyLogic
             direction.z *= _blockRotation.z;
             
             var step = _speed * Time.deltaTime;
-            var targetRot = Quaternion.LookRotation(direction.normalized);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, step);
+            
+            if (direction != Vector3.zero)
+            {
+                var targetRot = Quaternion.LookRotation(direction.normalized);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, step);
+            }
         }
     }
 }

@@ -20,12 +20,19 @@ namespace EnemyLogic
             _target = target;
             _gameFactory = gameFactory;
 
-            target.Died += OnTargetDied;
+            _target.Died += OnTargetDied;
+        }
+
+        private void OnDestroy()
+        {
+            _target.Died -= OnTargetDied;
         }
 
         private void OnTargetDied()
         {
-            Mover.enabled = false;
+            if (Mover != null)
+                Mover.enabled = false;
+            
             enabled = false;
         }
 

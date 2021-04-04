@@ -1,5 +1,6 @@
 ﻿using System;
 using Board.Tile;
+using Cthulhu;
 using EnemyLogic;
 using Infrastructure.Factory;
 using Items;
@@ -26,6 +27,7 @@ namespace Building
         
         private Rebuilding _rebuilding;
         private Health _eggHealth;
+        private Rise _homeRise;
         private bool _lock;
 
         private void Awake()
@@ -35,18 +37,32 @@ namespace Building
             Price = _description.UpgradePrice;
         }
 
-        public void Construct(GameFactory gameFactory, Health eggHealth)
+        public void Construct(GameFactory gameFactory, Health eggHealth, Rise homeRise)
         {
             if (_eggHealth != null)
             {
                 _eggHealth.Died -= OnEggDied;
                 _eggHealth = null;
             }
+
+            if (_homeRise != null)
+            {
+                _homeRise.Win -= OnWin;
+                _homeRise = null;
+            }
             
             _gameFactory = gameFactory;
 
             _eggHealth = eggHealth;
+            _homeRise = homeRise;
+            
             _eggHealth.Died += OnEggDied;
+            _homeRise.Win += OnWin;
+        }
+
+        private void OnWin()
+        {
+            _lock = true;
         }
 
         private void OnEggDied()

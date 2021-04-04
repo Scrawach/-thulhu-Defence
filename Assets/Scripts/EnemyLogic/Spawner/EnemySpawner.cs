@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using Cthulhu;
 using Infrastructure.Factory;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -24,16 +25,17 @@ namespace EnemyLogic.Spawner
         private bool _gameOver;
         private Coroutine _spawning;
 
-        public void Construct(GameFactory gameFactory)
+        public void Construct(GameFactory gameFactory, Health homeHealth, Rise homeRise)
         {
             _gameFactory = gameFactory;
-            _gameFactory.Home.GetComponent<Health>().Died += OnHomeDied;
+
+            homeHealth.Died += OnSpawnEnd;
+            homeRise.Win += OnSpawnEnd;
         }
 
-        private void OnHomeDied()
+        private void OnSpawnEnd()
         {
             _gameOver = true;
-            
             StopCoroutine(_spawning);
             _spawning = null;
         }

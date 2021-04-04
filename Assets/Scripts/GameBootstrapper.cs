@@ -52,7 +52,7 @@ public class GameBootstrapper : MonoBehaviour
         _descriptionView.Construct(game.Wallet);
         _walletView.Construct(game.Wallet);
 
-        _enemySpawner.Construct(game.GameFactory);
+        _enemySpawner.Construct(game.GameFactory, game.GameFactory.HomeHealth, game.GameFactory.Rise);
         _levelProgressSlider.Construct(game.Score);
         _levelProgress.Construct(game.GameFactory.Home.GetComponent<Health>(), game.GameFactory.Home.GetComponent<Rise>());
     }

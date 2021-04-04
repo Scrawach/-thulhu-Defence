@@ -18,11 +18,13 @@ namespace Infrastructure.Factory
         
         private GameObject _home;
         private Health _homeHealth;
+        private Rise _homeRise;
 
         public GameObject Home => _home;
         public Wallet Wallet => _wallet;
         public Score Score => _score;
-        
+        public Rise Rise => _homeRise;
+        public Health HomeHealth => _homeHealth;
 
         public GameFactory(AssetProvider assetProvider, Wallet wallet, Score score)
         {
@@ -64,8 +66,9 @@ namespace Infrastructure.Factory
                 case BuildingType.Home:
                     _home = _assetProvider.Initialize(AssetPath.Home, tile.transform.position);
                     _homeHealth = _home.GetComponent<Health>();
-                    _home.GetComponent<Rise>().Construct(Score);
-                    _home.GetComponent<Temple>().Construct(this, _homeHealth);
+                    _homeRise = _home.GetComponent<Rise>();
+                    _homeRise.Construct(Score);
+                    _home.GetComponent<Temple>().Construct(this, _homeHealth, _homeRise);
                     tile.SetBuilding(_home);
                     break;
                 case BuildingType.Tower:
@@ -74,7 +77,7 @@ namespace Infrastructure.Factory
                     break;
                 case BuildingType.Temple:
                     var temple = _assetProvider.Initialize(AssetPath.Temple, tile.transform.position); 
-                    temple.GetComponent<Temple>().Construct(this, _homeHealth);
+                    temple.GetComponent<Temple>().Construct(this, _homeHealth, _homeRise);
                     tile.SetBuilding(temple);
                     break;
                 default:
@@ -107,13 +110,13 @@ namespace Infrastructure.Factory
                 moveWithChanges.Construct(_home.transform);
             
             if (enemy.TryGetComponent(out Bullet bulletComponent))
-                bulletComponent.Construct(_home.GetComponent<Health>());
+                bulletComponent.Construct(_homeHealth);
             
             if (enemy.TryGetComponent(out DeathDrop deathDrop))
                 deathDrop.Construct(this);
             
             if (enemy.TryGetComponent(out AttackThenAround attackThenAround))
-                attackThenAround.Construct(_home.GetComponent<Health>(), this);
+                attackThenAround.Construct(_homeHealth, this);
         }
 
         public void CreateBullet(Vector3 position)
@@ -127,7 +130,7 @@ namespace Infrastructure.Factory
                 rotateToTarget.Construct(_home.transform);
             
             if (bullet.TryGetComponent(out Bullet bulletComponent))
-                bulletComponent.Construct(_home.GetComponent<Health>());
+                bulletComponent.Construct(_homeHealth);
         }
     }
 }

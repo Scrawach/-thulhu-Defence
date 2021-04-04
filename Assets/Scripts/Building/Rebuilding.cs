@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 namespace Building
@@ -20,6 +21,8 @@ namespace Building
         private bool _rebuildingNow;
 
         public bool Rebuild => _rebuildingNow;
+
+        public event Action Undergrounded;
         
         public void StartRebuild()
         {
@@ -46,6 +49,7 @@ namespace Building
                 yield return new WaitForFixedUpdate();
             }
             
+            Undergrounded?.Invoke();
             t = 0f;
             while (t < 1)
             {

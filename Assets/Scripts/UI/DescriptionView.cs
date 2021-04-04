@@ -132,6 +132,9 @@ namespace UI
 
         public void UpdateData(Description data)
         {
+            if (data == null)
+                return;
+            
             var symbol = data.UpgradeBonus > 0 ? "+" : "";
             ValueName.text = data.ValueName;
             Value.text = data.Value.ToString("0.0");

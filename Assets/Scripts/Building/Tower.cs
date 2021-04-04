@@ -30,6 +30,12 @@ namespace Building
         [SerializeField] 
         private float _timeForPrepare = 1f;
 
+        [SerializeField] 
+        private GameObject _originalModel;
+        
+        [SerializeField] 
+        private GameObject _upgradedModel;
+        
         private float _bonusDamagePerSecond;
         public BuildingDescription _description { get; private set; }
 
@@ -49,7 +55,16 @@ namespace Building
 
             _rebuilding = GetComponent<Rebuilding>();
             _description = GetComponent<BuildingDescription>();
+
+            _rebuilding.Undergrounded += OnTowerUndergrounded;
             Price = _description.Description.UpgradePrice;
+        }
+
+        private void OnTowerUndergrounded()
+        {
+            _rebuilding.Undergrounded -= OnTowerUndergrounded;
+            _originalModel.SetActive(false);
+            _upgradedModel.SetActive(true);
         }
 
         private void Update()

@@ -32,7 +32,7 @@ public class Game
         GameFactory = new GameFactory(assetProvider, Wallet, Score);
         GameBoard = new GameBoard(GameFactory, _boardContainer);
 
-        var randomMapCreator = new RandomMapCreator(data, Random.Range(0, 100));
+        var randomMapCreator = new RandomMapCreator(data);
         var map = randomMapCreator.Create();
         GameBoard.Generate(map, data.StartPosition);
     }

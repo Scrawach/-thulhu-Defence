@@ -1,12 +1,11 @@
-﻿using Board;
-using Board.Tile;
+﻿using Board.Tile;
 using Building;
 using Cthulhu;
 using EnemyLogic;
+using EnemyLogic.BulletLogic;
 using Infrastructure.AssetManagement;
 using Items;
 using Player;
-using UnityEditor.VersionControl;
 using UnityEngine;
 
 namespace Infrastructure.Factory
@@ -81,7 +80,17 @@ namespace Infrastructure.Factory
 
         public void CreateEnemy(Vector3 position)
         {
-            var enemy = _assetProvider.Initialize(AssetPath.SimpleEnemy, position);
+            CreateEnemy(AssetPath.Submarine, position);
+        }
+        
+        public void CreateRocket(Vector3 position)
+        {
+            CreateEnemy(AssetPath.RocketEnemy, position);
+        }
+        
+        private void CreateEnemy(string path, Vector3 position)
+        {
+            var enemy = _assetProvider.Initialize(path, position);
             
             if (enemy.TryGetComponent(out MoveToTarget moveToTarget))
                 moveToTarget.Construct(_home.transform);
@@ -89,11 +98,31 @@ namespace Infrastructure.Factory
             if (enemy.TryGetComponent(out RotateToTarget rotateToTarget))
                 rotateToTarget.Construct(_home.transform);
             
+            if (enemy.TryGetComponent(out MoveWithChange moveWithChanges))
+                moveWithChanges.Construct(_home.transform);
+            
+            if (enemy.TryGetComponent(out Bullet bulletComponent))
+                bulletComponent.Construct(_home.GetComponent<Health>());
+            
             if (enemy.TryGetComponent(out DeathDrop deathDrop))
                 deathDrop.Construct(this);
             
             if (enemy.TryGetComponent(out AttackThenAround attackThenAround))
-                attackThenAround.Construct(_home.GetComponent<Health>());
+                attackThenAround.Construct(_home.GetComponent<Health>(), this);
+        }
+
+        public void CreateBullet(Vector3 position)
+        {
+            var bullet = _assetProvider.Initialize(AssetPath.Bullet, position);
+            
+            if (bullet.TryGetComponent(out MoveToTarget moveToTarget))
+                moveToTarget.Construct(_home.transform);
+            
+            if (bullet.TryGetComponent(out RotateToTarget rotateToTarget))
+                rotateToTarget.Construct(_home.transform);
+            
+            if (bullet.TryGetComponent(out Bullet bulletComponent))
+                bulletComponent.Construct(_home.GetComponent<Health>());
         }
     }
 }

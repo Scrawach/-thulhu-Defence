@@ -59,11 +59,19 @@ namespace Building
 
         public void Upgrade()
         {
+            if (_description.CanUpgrade == false)
+            {
+                return;
+            }
+            
             _rebuilding.StartRebuild();
             _timeCooldown += _description.UpgradeBonus;
 
             if (_timeCooldown <= 1)
+            {
+                _description.CanUpgrade = false;
                 _timeCooldown = 1;
+            }
 
             _description.Value = _timeCooldown;
             _description.Update();

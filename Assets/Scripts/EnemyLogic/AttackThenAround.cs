@@ -1,4 +1,5 @@
 ﻿using System;
+using Infrastructure.Factory;
 using UnityEngine;
 
 namespace EnemyLogic
@@ -6,15 +7,18 @@ namespace EnemyLogic
     public class AttackThenAround : MonoBehaviour
     {
         public float AttackCooldown;
-        public float AttackDamage;
         public float AttackDistance;
+        public Transform ShootPosition;
+        public MoveToTarget Mover;
         
         private Health _target;
+        private GameFactory _gameFactory;
         private float _elapsedTime;
-        
-        public void Construct(Health target)
+
+        public void Construct(Health target, GameFactory gameFactory)
         {
             _target = target;
+            _gameFactory = gameFactory;
         }
 
         private void Update()
@@ -23,6 +27,7 @@ namespace EnemyLogic
 
             if (distance <= AttackDistance)
             {
+                Mover.enabled = false;
                 TryAttack();
             }
         }
@@ -40,7 +45,9 @@ namespace EnemyLogic
             }
         }
 
-        private void Attack() => 
-            _target.ApplyDamage(AttackDamage);
+        private void Attack()
+        {
+            _gameFactory.CreateBullet(ShootPosition.position);
+        }
     }
 }

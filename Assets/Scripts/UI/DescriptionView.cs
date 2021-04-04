@@ -20,14 +20,19 @@ namespace UI
         
         public GameObject UpgradeMenu;
         public Button UpgradeButton;
-
         public CanvasFade Error;
+
+        public GameObject InformationPanel;
+        public TextMeshProUGUI ValueNameInfo;
+        public TextMeshProUGUI ValueInfo;
 
         private GameObject _selectedObject;
         private Wallet _wallet;
 
         private Description _observedData;
         private bool _panelShown;
+
+        private TowerDistanceView _view;
         
         public void Construct(Wallet wallet)
         {
@@ -48,6 +53,12 @@ namespace UI
 
         private void OnTileSelected(BoardTile tile)
         {
+            if (_view != null)
+            {
+                _view.Hide();
+                _view = null;
+            }
+            
             if (tile.Building == null)
             {
                 HidePanel();
@@ -58,10 +69,20 @@ namespace UI
             
             ShowPanel();
             Description.text = tile.Description.Text;
+            ValueNameInfo.text = tile.Description.ValueName;
+            ValueInfo.text = tile.Description.Value.ToString("0.0");
+
+            if (tile.Building.TryGetComponent(out TowerDistanceView view))
+            {
+                _view = view;
+                _view.Show();
+            }
 
             if (tile.Description.CanUpgrade)
             {
                 UpgradeMenu.SetActive(true);
+                InformationPanel.SetActive(false);
+                
                 _selectedObject = tile.Building;
                 UpdateData(tile.Description);
 
@@ -71,6 +92,7 @@ namespace UI
             else
             {
                 Unsubscribe();
+                InformationPanel.SetActive(true);
                 UpgradeMenu.SetActive(false);
             }
         }

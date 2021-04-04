@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5655736702758170118}
   - component: {fileID: 3813805178407037577}
   - component: {fileID: 5949636641855190346}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 6882066816739717173}
   - component: {fileID: 3099947195079240310}
   - component: {fileID: 6697133538851842506}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -320,7 +320,9 @@ GameObject:
   - component: {fileID: 7436061540649350852}
   - component: {fileID: 3604704768278547287}
   - component: {fileID: 3173269216825181343}
-  m_Layer: 0
+  - component: {fileID: 1322043384465678420}
+  - component: {fileID: 6743947903717292444}
+  m_Layer: 2
   m_Name: Home
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -429,11 +431,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Description:
     Text: "\u041B\u043E\u0433\u043E\u0432\u043E \u0434\u0440\u0435\u0432\u043D\u0435\u0433\u043E"
-    CanUpgrade: 0
-    UpgradePrice: 0
-    UpgradeBonus: 0
-    ValueName: 
-    Value: 0
+    CanUpgrade: 1
+    UpgradePrice: 2
+    UpgradeBonus: 1
+    ValueName: 'HP:'
+    Value: 10
+--- !u!135 &1322043384465678420
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2873473770678123221}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6743947903717292444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2873473770678123221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63c685bfadd84f9c9ebfeaab31426b27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3420241625239853213
 GameObject:
   m_ObjectHideFlags: 0
@@ -446,7 +473,7 @@ GameObject:
   - component: {fileID: 1410515753724169602}
   - component: {fileID: 3780736510484199752}
   - component: {fileID: 965038888205601090}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: cthulhu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -549,7 +576,7 @@ GameObject:
   - component: {fileID: 327906659697799921}
   - component: {fileID: 8976346342040177679}
   - component: {fileID: 1105372895642834310}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -663,7 +690,7 @@ GameObject:
   - component: {fileID: 3527442706552887096}
   - component: {fileID: 530340528440449181}
   - component: {fileID: 2357866056099261527}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: egg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -746,7 +773,7 @@ GameObject:
   - component: {fileID: 7278576055742370490}
   - component: {fileID: 5397946420756478835}
   - component: {fileID: 9018195447125338150}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -826,7 +853,7 @@ GameObject:
   m_Component:
   - component: {fileID: 434951829886924290}
   - component: {fileID: 1565162790235859381}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Audio Source
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -954,7 +981,7 @@ GameObject:
   - component: {fileID: 3769984436422647405}
   - component: {fileID: 8964104386664719552}
   - component: {fileID: 1812007633889174632}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1035,7 +1062,7 @@ GameObject:
   - component: {fileID: 1215482270260296546}
   - component: {fileID: 8465205492426387265}
   - component: {fileID: 1507386516831229080}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Health_text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1171,7 +1198,7 @@ GameObject:
   - component: {fileID: 660189000040308258}
   - component: {fileID: 8644103749953261901}
   - component: {fileID: 6287254380772517901}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1296,6 +1323,10 @@ PrefabInstance:
     - target: {fileID: 5290262436961075599, guid: 02db1e6c55876234d8502fd2cdd2998a, type: 3}
       propertyPath: m_Name
       value: BuildingEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 5290262436961075599, guid: 02db1e6c55876234d8502fd2cdd2998a, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02db1e6c55876234d8502fd2cdd2998a, type: 3}
